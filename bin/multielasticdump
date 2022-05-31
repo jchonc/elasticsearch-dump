@@ -172,7 +172,8 @@ const commonParams = [
 const fileExt = options.fsCompress ? 'json.gz' : 'json'
 
 const validateDirectory = (options, field) => {
-  if (options[field].startsWith('s3://')) {
+  if (options[field].startsWith('s3://') ||
+      options[field].startsWith('gs://')) {
     return
   }
 
