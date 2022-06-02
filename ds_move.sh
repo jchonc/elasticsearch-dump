@@ -20,32 +20,32 @@ function close_index() {
 
 function open_all_indexes() {
    for idx in ${all_indexes}; do
-   get_status "$idx"
-   if [[ $index_status == "close" ]] ; then
-      echo "opening index $idx"
-      open_index "$idx"
-      closed_indexes+="$idx"
-      for run in {1..10}; do 
-         get_status "$idx"
-         if [[ $index_status != "close" ]] ; then
-         break
-         fi
-         sleep 2
-      done    
+      get_status "$idx"
       if [[ $index_status == "close" ]] ; then
-         echo "failed to open index $idx"
-         exit 1
-      else
-         echo "index $idx opened"
+         echo "opening index $idx"
+         open_index "$idx"
+         closed_indexes+="$idx"
+         for run in {1..10}; do 
+            get_status "$idx"
+            if [[ $index_status != "close" ]] ; then
+               break
+            fi
+            sleep 2
+         done    
+         if [[ $index_status == "close" ]] ; then
+            echo "failed to open index $idx"
+            exit 1
+         else
+            echo "index $idx opened"
+         fi
       fi
-   fi
    done
 }
 
 function close_all_indexes() {
    for idx in ${closed_indexes}; do
-   echo "closing index $idx"
-   close_index "$idx"
+      echo "closing index $idx"
+      close_index "$idx"
    done
 }
 
