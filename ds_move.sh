@@ -53,7 +53,6 @@ all_indexes_1=$(printf "|^%s$" "${all_indexes[@]}")
 all_indexes_1=${all_indexes_1:1}
 
 open_all_indexes
-echo "$all_indexes_1"
 
 ./bin/multielasticdump \
   --fileSize=10mb \
@@ -62,7 +61,7 @@ echo "$all_indexes_1"
   --includeType=data \
   --ignoreChildError=true \
   --direction=dump \
-  --limit=1000 \
+  --limit=8000 \
   --match="$all_indexes_1" \
   --input="$base_url" \
   --searchBody=@defaultSearchBody.json \
