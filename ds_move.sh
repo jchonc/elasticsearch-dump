@@ -56,7 +56,7 @@ open_all_indexes
 
 ./bin/multielasticdump \
   --fileSize=10mb \
-  --size=10000 \
+  --size=100000 \
   --gsCompress=true \
   --includeType=data \
   --ignoreChildError=true \
