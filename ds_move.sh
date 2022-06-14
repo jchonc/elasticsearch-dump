@@ -63,7 +63,6 @@ open_all_indexes
   --limit=8000 \
   --match="$all_indexes_1" \
   --input="$base_url" \
-  --searchBody=@defaultSearchBody.json \
   --output=gs://artemis-elastic-dump/test-2022-06-14 
 
 close_all_indexes
