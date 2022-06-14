@@ -1,9 +1,7 @@
 {
     "query": 
     { 
-        "query_string": {
-            "query": "source_publisher_subtype:(twitter OR instagram OR wsl_blogs OR WEBLOG OR FORUM OR MAINSTREAM_NEWS) AND published: [2020-01-01T00:00:00Z TO 2022-12-31T23:59:59Z]"
-        }
+        "match_all": {}
     }, 
     "_source": [
         "author_avatar_height",

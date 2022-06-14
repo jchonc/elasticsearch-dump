@@ -25,7 +25,7 @@ function open_all_indexes() {
          echo "opening index $idx"
          open_index "$idx"
          closed_indexes+="$idx"
-         for run in {1..10}; do 
+         for run in {1..30}; do 
             get_status "$idx"
             if [[ $index_status != "close" ]] ; then
                break
@@ -55,8 +55,7 @@ all_indexes_1=${all_indexes_1:1}
 open_all_indexes
 
 ./bin/multielasticdump \
-  --fileSize=10mb \
-  --size=100000 \
+  --fileSize=100mb \
   --gsCompress=true \
   --includeType=data \
   --ignoreChildError=true \
@@ -65,6 +64,6 @@ open_all_indexes
   --match="$all_indexes_1" \
   --input="$base_url" \
   --searchBody=@defaultSearchBody.json \
-  --output=gs://test-1300-bucket/dump2 
+  --output=gs://artemis-elastic-dump/test-2022-06-14 
 
 close_all_indexes
